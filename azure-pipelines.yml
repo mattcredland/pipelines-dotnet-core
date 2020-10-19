@@ -37,7 +37,7 @@ steps:
     archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
     replaceExistingArchive: true
 - task: SqlAzureDacpacDeployment@1
-  condition: eq( variables['buildConfiguration'], 'Release')
+  condition: eq( variables['buildConfiguration'], 'ReleaseWin')
   inputs:
     azureSubscription: 'Visual Studio Professional Subscription(bd8db1db-4234-480d-a5ba-e4406eecfb81)'
     AuthenticationType: 'server'
