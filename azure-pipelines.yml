@@ -13,11 +13,13 @@ variables:
   buildConfiguration: 'Release'
 
 steps:
-- script: dotnet build --configuration $(buildConfiguration)
-  displayName: 'dotnet build $(buildConfiguration)'
 
 - task: ManualValidation@0
   inputs:
     notifyUsers: ''
     instructions: 'Instructions here!'
     onTimeout: 'resume'
+
+- script: dotnet build --configuration $(buildConfiguration)
+  displayName: 'dotnet build $(buildConfiguration)'
+
