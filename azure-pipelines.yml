@@ -13,8 +13,8 @@ strategy:
    buildConfig: 'Release'
   windows_latest:
    imageName: 'windows-latest'
-   buildConfig: 'Debug'
- maxParallel: 3
+   buildConfig: 'NonExistant'
+ maxParallel: 2
 
 
 pool:
