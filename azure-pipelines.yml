@@ -30,10 +30,21 @@ steps:
 
 
 - task: ArchiveFiles@2
-  condition: eq( variables['buildConfiguration'], 'Release')
   inputs:
     rootFolderOrFile: '$(Build.BinariesDirectory)'
     includeRootFolder: true
     archiveType: 'zip'
     archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
     replaceExistingArchive: true
+- task: SqlAzureDacpacDeployment@1
+  condition: eq( variables['buildConfiguration'], 'Release')
+  inputs:
+    azureSubscription: 'Visual Studio Professional Subscription(bd8db1db-4234-480d-a5ba-e4406eecfb81)'
+    AuthenticationType: 'server'
+    ServerName: 'TestSqlServerName'
+    DatabaseName: 'TestDB'
+    SqlUsername: 'admin'
+    SqlPassword: 'admin'
+    deployType: 'SqlTask'
+    SqlFile: 'CREATE TABLE Persons (     PersonID int,     LastName varchar(255),     FirstName varchar(255),     Address varchar(255),     City varchar(255) );'
+    IpDetectionMethod: 'AutoDetect'
