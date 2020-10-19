@@ -10,8 +10,10 @@ strategy:
  matrix:
   ubuntu_latest:
    imageName: 'ubuntu-latest'
+   buildConfig: 'Release'
   windows_latest:
    imageName: 'windows-latest'
+   buildConfig: 'Debug'
  maxParallel: 3
 
 
@@ -19,7 +21,7 @@ pool:
   vmImage: $(imageName)
 
 variables:
-  buildConfiguration: 'Release'
+  buildConfiguration: $(buildConfig)
 
 steps:
 
