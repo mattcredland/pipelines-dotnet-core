@@ -30,6 +30,7 @@ steps:
 
 
 - task: ArchiveFiles@2
+  condition: eq(variables['imageName'], 'ubuntu-latest')
   inputs:
     rootFolderOrFile: '$(Build.BinariesDirectory)'
     includeRootFolder: true
