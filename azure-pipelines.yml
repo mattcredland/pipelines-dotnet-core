@@ -13,7 +13,7 @@ strategy:
    buildConfig: 'Release'
   windows_latest:
    imageName: 'windows-latest'
-   buildConfig: 'NonExistant'
+   buildConfig: 'ReleaseWin'
  maxParallel: 2
 
 
@@ -30,6 +30,7 @@ steps:
 
 
 - task: ArchiveFiles@2
+  condition: eq(${{ variables.buildConfiguration }}, 'Release')
   inputs:
     rootFolderOrFile: '$(Build.BinariesDirectory)'
     includeRootFolder: true
